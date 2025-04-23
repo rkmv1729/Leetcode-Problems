@@ -1,0 +1,27 @@
+Algorithm 
+
+initialise N <- floor(log(n))+1
+create array group of size 9*N
+initialise max <- 0, count <- 0, sum, temp
+for i=1 to n in steps of 1 do
+      initialise temp <- i
+      initialise sum <- 0
+      while (temp>0) 
+           sum += temp % 10
+           temp /= 10
+      end while
+      group[sum-1]++
+end for
+for j=0 to N-1 in steps of 1 do
+      if (group[j]>max) count=1, max=group[j]
+      else if (group[j]==max) count++
+end for
+return count
+
+// 1 to 9956, n = 9956
+max(digitsSum) occurs for the number with first digit one less that that in n and remaining digits all 9's
+Here max(digitsSum) = 35 (for 8999)
+//
+
+      
+    
