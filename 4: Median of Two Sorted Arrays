@@ -1,0 +1,44 @@
+Algorithm
+
+// nums1 = [1,4,5,6,15,19,29,31], m = 8
+// nums2 = [2,3,18,22,23,24,27,34,56], n = 9
+
+start with smaller array   // nums1
+if (m is even) 
+    median = nums1[m/2-1]    // 0-arrayed indexing
+    if (n is even) leftElements = (m+n)/2-m/2 = n/2
+    else leftElements = (m+n+1)/2-m/2 = (n+1)/2
+else 
+    median = nums1[(m-1)/2]          // median = 6
+    if (n is even) leftElements = (m+n+1)/2-(m+1)/2 = n/2
+    else leftElements = (m+n)/2-(m+1)/2 = (n-1)/2           // leftElements = 5
+    
+initialise count1 <- 0, count2 <- 0, indx1 <- m/2, indx2 <- 0
+while (leftElements>0) 
+      while (count2<=leftElements && nums2[indx2]<median) count2++, indx2++    // count2 = 2
+      if (leftElements>=count2)
+         leftElements = leftElements-count2             // leftElements = 3
+         if (leftElements>=1)
+              median = nums2[indx2]                       // median = 18
+              leftElements = leftElements-1              // leftElements = 2
+      count2 = 0
+
+      while (count1<=leftElements && nums1[indx1]<median) count1++, indx1++   // count1 = 1
+      if (leftElements>=count1)
+         leftElements = leftElements-count1             // leftElements = 1
+         if (leftElements>=1)
+            median = nums1[indx1]                   // median = 19
+            leftElements = leftElements-1              // leftElements = 0
+      count1 = 0
+end while
+
+
+// INCOMPLETE
+
+
+
+
+  
+
+
+
